@@ -46,7 +46,7 @@ export default function About() {
         <li>D1 FCS Conference Coach of the Year</li>
         <li>Head coaching experience at JUCO, D2, FCS, and FBS</li>
         <li>35 years evaluating and developing college athletes</li>
-        <li>Sent players to Power 4, FCS, Group of 5, NFL, NAIA, D2, and D3.</li>
+        <li>Sent players to Power 4, FCS, Group of 5, NFL, NAIA, D2, and D3</li>
       </ul>
 
       <p className="mt-8 text-text-muted">
