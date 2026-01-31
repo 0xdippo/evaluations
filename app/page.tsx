@@ -93,23 +93,23 @@ export default function Home() {
           <h2 className="text-xl font-semibold text-navy">
             Why We&apos;re Different
           </h2>
-          <ul className="mx-auto mt-4 w-fit list-disc space-y-2 pl-5 text-left text-text-muted">
-            <li>Experience at every collegiate level</li>
-            <li>No agendas, no sales pitch</li>
-            <li>Built for parents and athletes</li>
-            <li>Proven track record</li>
-          </ul>
+          <div className="mt-4 space-y-2 text-text-muted">
+            <p>Experience at every collegiate level</p>
+            <p>Built for parents and athletes</p>
+            <p>No agendas, no sales pitch</p>
+            <p>Proven track record</p>
+          </div>
         </section>
         <section className="text-center">
           <h2 className="text-xl font-semibold text-navy">
             How it works
           </h2>
-          <ul className="mx-auto mt-4 w-fit list-disc space-y-2 pl-5 text-left text-text-muted">
-            <li>Purchase your evaluation</li>
-            <li>Submit film + questionnaire</li>
-            <li>Get a full breakdown</li>
-            <li>Move forward with a real plan</li>
-          </ul>
+          <div className="mt-4 space-y-2 text-text-muted">
+            <p>Purchase your evaluation</p>
+            <p>Submit film + questionnaire</p>
+            <p>Get a full PDF breakdown</p>
+            <p>Move forward with a real plan</p>
+          </div>
         </section>
       </div>
 
