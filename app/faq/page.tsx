@@ -1,4 +1,5 @@
 import { Accordion } from "@/components/Accordion";
+import { Carousel } from "@/components/Carousel";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -57,13 +58,16 @@ const faqItems = [
 
 export default function FAQ() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <h1 className="text-3xl font-semibold tracking-tight text-navy">
-        FAQ
-      </h1>
-      <div className="mt-8">
-        <Accordion items={faqItems} />
+    <>
+      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+        <h1 className="text-3xl font-semibold tracking-tight text-navy">
+          FAQ
+        </h1>
+        <div className="mt-8">
+          <Accordion items={faqItems} />
+        </div>
       </div>
-    </div>
+      <Carousel />
+    </>
   );
 }

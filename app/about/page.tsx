@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+import { Carousel } from "@/components/Carousel";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
+    <>
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="text-3xl font-semibold tracking-tight text-navy">
         About
@@ -59,5 +61,7 @@ export default function About() {
         <Button href="/services">Get Your Evaluation</Button>
       </div>
     </div>
+    <Carousel />
+    </>
   );
 }

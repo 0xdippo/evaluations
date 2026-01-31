@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Card } from "@/components/Card";
+import { Carousel } from "@/components/Carousel";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ const STRIPE_PAYMENT_LINK = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK_URL;
 
 export default function Services() {
   return (
+    <>
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="text-3xl font-semibold tracking-tight text-navy">
         Evaluation &amp; Services
@@ -40,13 +42,15 @@ export default function Services() {
       </ul>
 
       <Card className="mt-10">
-        <p className="text-2xl font-semibold text-navy">$149 one-time</p>
-        <p className="mt-2 text-sm text-text-muted">
-          No upsells. No subscriptions. No hidden charges.
-        </p>
-        <p className="mt-2 text-sm text-text-muted">
-          Delivered within 3 business days as a PDF.
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-3">
+          <div className="space-y-0.5 text-sm text-text-muted">
+            <p>No upsells. No subscriptions. No hidden charges.</p>
+            <p>Delivered within 3 business days as a PDF.</p>
+          </div>
+          <p className="text-2xl font-semibold text-navy shrink-0 -mt-4">
+            $149 <span className="text-sm font-normal">one-time</span>
+          </p>
+        </div>
         <div className="mt-6">
           {STRIPE_PAYMENT_LINK ? (
             <a
@@ -73,5 +77,7 @@ export default function Services() {
         </Link>
       </p>
     </div>
+    <Carousel />
+    </>
   );
 }
