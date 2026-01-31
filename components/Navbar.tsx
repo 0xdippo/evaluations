@@ -40,18 +40,28 @@ export function Navbar() {
   return (
     <header className="border-b border-navy/20 bg-navy">
       <nav
-        className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6"
+        className="relative mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6 sm:py-6"
         aria-label="Main navigation"
       >
+        {/* Left spacer: balances right links so logo stays centered */}
+        <div className="hidden md:block md:flex-1" aria-hidden />
+
+        {/* Logo: centered, on top, lowered slightly */}
         <Link
           href="/"
-          className="text-lg font-semibold text-page-bg focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded"
+          className="absolute left-1/2 top-[63%] z-10 flex -translate-x-1/2 -translate-y-1/2 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded"
+          aria-label="Campbell Football Evaluations – Home"
         >
-          Campbell Football Evaluations
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Campbell Football Evaluations"
+            className="h-[7.5rem] w-auto sm:h-[9rem] md:h-[10.5rem]"
+          />
         </Link>
 
-        {/* Desktop: inline links */}
-        <ul className="hidden md:flex md:items-center md:gap-6">
+        {/* Desktop: inline links – pushed right */}
+        <ul className="hidden md:flex md:flex-1 md:items-center md:justify-end md:gap-6 md:pl-12">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
