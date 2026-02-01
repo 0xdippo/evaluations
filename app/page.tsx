@@ -83,7 +83,7 @@ export default function Home() {
         <p className="mt-4 text-text-muted">
           With the transfer portal reshaping opportunities, the path is harder
           for high school athletes. Coach Campbell provides an honest evaluation
-          and a clear plan forward—without hype or sales pitches.
+          and a clear path forward—without hype or sales pitches.
         </p>
       </section>
 
