@@ -117,13 +117,13 @@ export function Navbar() {
           aria-label="Close menu"
         />
 
-        {/* Panel */}
+        {/* Panel: left side, narrow (background for text only) */}
         <div
-          className={`absolute top-0 right-0 h-full w-full max-w-xs bg-navy shadow-xl transition-transform duration-200 ease-out ${
-            open ? "translate-x-0" : "translate-x-full"
+          className={`absolute top-0 left-0 h-full w-[9rem] max-w-[40vw] bg-navy shadow-xl transition-transform duration-200 ease-out ${
+            open ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="flex flex-col pt-16 px-6 pb-8">
+          <div className="flex flex-col pt-16 px-4 pb-8">
             <ul className="space-y-1">
               {navLinks.map(({ href, label }) => (
                 <li key={href}>
