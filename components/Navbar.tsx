@@ -38,9 +38,9 @@ export function Navbar() {
     "block py-3 text-page-bg/90 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded text-base font-medium transition-colors";
 
   return (
-    <header className="vintage-texture border-b border-navy/20 bg-navy">
+    <header className="relative z-[60] vintage-texture border-b border-navy/20 bg-navy">
       <nav
-        className="relative mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6 sm:py-6"
+        className="relative z-[55] mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6 sm:py-6"
         aria-label="Main navigation"
       >
         {/* Left spacer: balances right links so logo stays centered */}
