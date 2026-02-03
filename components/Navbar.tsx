@@ -38,7 +38,7 @@ export function Navbar() {
     "block py-3 text-page-bg/90 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded text-base font-medium transition-colors";
 
   return (
-    <header className="relative z-[60] vintage-texture border-b border-navy/20 bg-navy">
+    <header className="relative z-[60] border-b border-navy/20 bg-navy">
       <nav
         className="relative z-[55] mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6 sm:py-6"
         aria-label="Main navigation"
@@ -47,7 +47,7 @@ export function Navbar() {
         <div className="hidden md:block md:flex-1" aria-hidden />
 
         {/* Logo: centered, on top, lowered slightly, with subtle texture */}
-        <div className="vintage-texture absolute left-1/2 top-[63%] z-10 -translate-x-1/2 -translate-y-1/2 rounded">
+        <div className="absolute left-1/2 top-[63%] z-10 -translate-x-1/2 -translate-y-1/2 rounded">
           <Link
             href="/"
             className="flex focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded"

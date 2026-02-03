@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="vintage-texture border-t border-navy/15 bg-navy mt-auto">
+    <footer className="border-t border-navy/15 bg-navy mt-auto">
       <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 text-center">
         <p className="text-sm text-page-bg/90">
           Email:{" "}
