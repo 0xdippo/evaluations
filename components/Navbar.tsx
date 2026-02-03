@@ -39,28 +39,28 @@ export function Navbar() {
 
   return (
     <header className="relative z-[60] border-b border-navy/20 bg-navy">
+      {/* Logo: centered in header (full width) so it stays centered in production */}
+      <div className="absolute left-1/2 top-[63%] z-[56] -translate-x-1/2 -translate-y-1/2 rounded pointer-events-none md:pointer-events-auto">
+        <Link
+          href="/"
+          className="flex focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded"
+          aria-label="Campbell Football Evaluations – Home"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Campbell Football Evaluations"
+            className="h-[7.5rem] w-auto sm:h-[9rem] md:h-[10.5rem]"
+          />
+        </Link>
+      </div>
+
       <nav
         className="relative z-[55] mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6 sm:py-6"
         aria-label="Main navigation"
       >
-        {/* Left spacer: balances right links so logo stays centered */}
+        {/* Left spacer: balances right links */}
         <div className="hidden md:block md:flex-1" aria-hidden />
-
-        {/* Logo: centered, on top, lowered slightly, with subtle texture */}
-        <div className="absolute left-1/2 top-[63%] z-10 -translate-x-1/2 -translate-y-1/2 rounded">
-          <Link
-            href="/"
-            className="flex focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded"
-            aria-label="Campbell Football Evaluations – Home"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo.png"
-              alt="Campbell Football Evaluations"
-              className="h-[7.5rem] w-auto sm:h-[9rem] md:h-[10.5rem]"
-            />
-          </Link>
-        </div>
 
         {/* Desktop: inline links – far right, tighter, smaller */}
         <ul className="hidden md:flex md:ml-auto md:items-center md:gap-3">
