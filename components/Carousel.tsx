@@ -3,7 +3,17 @@
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 
-const SLIDES = Array.from({ length: 8 }, (_, i) => `/carousel/carousel-${i + 1}.png`);
+function shuffle<T>(arr: T[]): T[] {
+  const out = [...arr];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+const SLIDES = shuffle(
+  Array.from({ length: 13 }, (_, i) => `/carousel/carousel-${i + 1}.png`)
+);
 const AUTOPLAY_MS = 5000;
 
 export function Carousel() {

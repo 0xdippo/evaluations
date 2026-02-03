@@ -62,13 +62,13 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop: inline links – pushed right */}
-        <ul className="hidden md:flex md:flex-1 md:items-center md:justify-end md:gap-6 md:pl-12">
+        {/* Desktop: inline links – far right, tighter, smaller */}
+        <ul className="hidden md:flex md:ml-auto md:items-center md:gap-3">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="text-page-bg/90 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded text-sm font-medium transition-colors"
+                className="text-page-bg/90 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded text-xs font-medium transition-colors"
               >
                 {label}
               </Link>

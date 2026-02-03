@@ -10,9 +10,9 @@ export default function Home() {
         className="relative w-full min-h-[52vh] sm:min-h-[58vh] flex flex-col items-center justify-center bg-navy text-center"
         aria-label="Hero"
       >
-        {/* Background image: anchored to top, bottom cropped by container */}
+        {/* Background image: anchored to top, bottom cropped by container, slight blur */}
         <div
-          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat blur-[2px]"
           style={{ backgroundImage: "url('/hero-coach.png')" }}
           aria-hidden
         />
@@ -35,18 +35,22 @@ export default function Home() {
 
       {/* Main content */}
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
-      {/* What you get */}
-      <section className="mt-0 sm:mt-0">
-        <h2 className="sr-only">What you get</h2>
-        <div className="grid gap-6 sm:grid-cols-3">
+      {/* What This Is + cards */}
+      <section className="mt-0 sm:mt-0 text-center">
+        <h2 className="text-xl font-semibold text-navy">
+          What the Evaluation Is
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-text-muted">
+          Coach Campbell reviews your film the way a college staff would. You&apos;ll get a clear breakdown of what you&apos;re doing well, what&apos;s costing you, and what needs to improve — plus a realistic plan for your next steps based on where you are right now.
+        </p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
           <Card>
             <div className="text-center">
               <h3 className="font-semibold text-navy">
                 Real Clarity
               </h3>
               <p className="mt-2 text-sm text-text-muted">
-                No hype and no guessing. You&apos;ll get a clear picture of where
-                you stand right now and what&apos;s realistic moving forward.
+                You&apos;ll know exactly what shows up on film — the good, the bad, and the in-between. No buzzwords, no false confidence. Just an honest snapshot of where you are today and what that means for recruiting.
               </p>
             </div>
           </Card>
@@ -56,9 +60,7 @@ export default function Home() {
                 Position-Specific Feedback
               </h3>
               <p className="mt-2 text-sm text-text-muted">
-                Clear notes on strengths, weaknesses, and development priorities
-                tailored to your position. Not generic tips—specific, actionable
-                points you can train.
+                Every position is judged differently. You&apos;ll get specific coaching points tied to your role — what recruiters want to see, what&apos;s missing, and the priorities that will move you forward fastest.
               </p>
             </div>
           </Card>
@@ -68,8 +70,7 @@ export default function Home() {
                 Real Direction
               </h3>
               <p className="mt-2 text-sm text-text-muted">
-                A practical roadmap—what to work on, how to present your film,
-                and what steps make sense for your next recruiting moves.
+                This isn&apos;t just &quot;here&apos;s what you did.&quot; You&apos;ll leave with a practical plan: what to train, what to clean up, how to build better film, and which next steps actually fit your situation.
               </p>
             </div>
           </Card>
