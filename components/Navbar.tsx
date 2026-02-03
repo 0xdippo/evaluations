@@ -39,14 +39,10 @@ export function Navbar() {
 
   return (
     <header className="relative z-[60] border-b border-navy/20 bg-navy">
-      {/* Logo: centered via inline styles so deploy/CI cannot break it (do not add dir=rtl or override these) */}
+      {/* Logo: horizontally centered, anchored to header bottom so it straddles into the hero */}
       <div
-        className="absolute z-[56] rounded pointer-events-none md:pointer-events-auto"
-        style={{
-          left: "50%",
-          top: "63%",
-          transform: "translate(-50%, -50%)",
-        }}
+        className="absolute z-[56] pointer-events-none md:pointer-events-auto"
+        style={{ left: "50%", top: "63%", transform: "translate(-50%, -50%)" }}
       >
         <Link
           href="/"
