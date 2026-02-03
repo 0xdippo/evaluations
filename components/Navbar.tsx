@@ -39,8 +39,15 @@ export function Navbar() {
 
   return (
     <header className="relative z-[60] border-b border-navy/20 bg-navy">
-      {/* Logo: centered in header (full width) so it stays centered in production */}
-      <div className="absolute left-1/2 top-[63%] z-[56] -translate-x-1/2 -translate-y-1/2 rounded pointer-events-none md:pointer-events-auto">
+      {/* Logo: centered via inline styles so deploy/CI cannot break it (do not add dir=rtl or override these) */}
+      <div
+        className="absolute z-[56] rounded pointer-events-none md:pointer-events-auto"
+        style={{
+          left: "50%",
+          top: "63%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
         <Link
           href="/"
           className="flex focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy rounded"
