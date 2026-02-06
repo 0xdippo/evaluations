@@ -21,10 +21,13 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:py-20">
           <h1 className="text-3xl font-semibold tracking-tight text-page-bg sm:text-4xl [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">
+            Parents Deserve Straight Answers. Athletes Deserve Real Insight.
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-xl font-medium text-page-bg/95 [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">
             College football evaluations from a proven two-time National
             Champion head coach.
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-page-bg/90 [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">
+          </p>
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-page-bg/90 [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">
             34 years of college coaching experience. Clear, honest evaluations,
             built to help families make the right decisions.
           </p>
