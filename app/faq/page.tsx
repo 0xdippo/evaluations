@@ -48,8 +48,8 @@ const faqItems = [
     question: "What makes this evaluation different?",
     answer: (
       <p>
-        35 years as a college football coach, with 22 years as head coach at
-        JUCO, D2, FCS, and FBS. No agendas, no sales pitch — just honest
+        34 years as a college football coach, with 22 years as head coach at
+        JUCO, D2, FCS, and FBS. No agendas, no sales pitch - just honest
         assessment and a real plan forward for parents and athletes.
       </p>
     ),

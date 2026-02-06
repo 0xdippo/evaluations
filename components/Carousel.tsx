@@ -69,7 +69,7 @@ export function Carousel() {
           <span aria-hidden>‹</span>
         </button>
 
-        {/* Slide strip: prev | center | next — center floats on top */}
+        {/* Slide strip: prev | center | next - center floats on top */}
         <div className="relative flex flex-1 items-center justify-center gap-0 sm:gap-2">
           {/* Left (prev) - behind, 50% opacity, extends out */}
           <div className="relative z-10 hidden h-[180px] w-[120px] shrink-0 overflow-hidden rounded-lg opacity-50 sm:block sm:h-[220px] sm:w-[160px] md:h-[260px] md:w-[220px]">

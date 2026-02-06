@@ -63,7 +63,7 @@ export async function submitQuestionnaire(
   const fromEmail =
     process.env.FROM_EMAIL ?? "Campbell Evaluations <onboarding@resend.dev>";
   const resend = new Resend(apiKey);
-  const subject = `New Evaluation Submission — ${data.athleteName} (${data.athleteGradYear})`;
+  const subject = `New Evaluation Submission - ${data.athleteName} (${data.athleteGradYear})`;
   const body = formatEmailBody(data);
 
   try {
@@ -86,8 +86,8 @@ export async function submitQuestionnaire(
     await resend.emails.send({
       from: fromEmail,
       to: data.parentEmail,
-      subject: "Campbell Football Evaluations — We received your submission",
-      text: `Hi ${data.parentName},\n\nWe received your evaluation submission for ${data.athleteName}. Expect your PDF within 3 business days.\n\n— Campbell Football Evaluations`,
+      subject: "Campbell Football Evaluations - We received your submission",
+      text: `Hi ${data.parentName},\n\nWe received your evaluation submission for ${data.athleteName}. Expect your PDF within 3 business days.\n\n- Campbell Football Evaluations`,
     });
   } catch {
     // Non-fatal; main email to business was sent

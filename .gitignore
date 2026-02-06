@@ -30,7 +30,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files — never commit real secrets (use .env.local locally; set in Vercel)
+# env files - never commit real secrets (use .env.local locally; set in Vercel)
 .env
 .env.local
 .env.development.local

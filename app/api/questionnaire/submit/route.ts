@@ -83,9 +83,9 @@ export async function POST(request: NextRequest) {
   const customerEmail =
     (session.customer_details?.email as string | undefined) ?? "";
 
-  const athleteName = answers.athleteName ?? "—";
-  const position = answers.athletePosition ?? "—";
-  const adminSubject = `New Questionnaire Submission — ${athleteName} (${position})`;
+  const athleteName = answers.athleteName ?? "-";
+  const position = answers.athletePosition ?? "-";
+  const adminSubject = `New Questionnaire Submission - ${athleteName} (${position})`;
 
   const resend = getResendClient();
   if (ADMIN_NOTIFY_EMAIL) {

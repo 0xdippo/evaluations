@@ -33,7 +33,7 @@ export default async function GetStartedPage({ searchParams }: Props) {
             within 3 business days.
           </p>
           <p className="mt-2 text-sm text-gold">
-            (Test mode — Stripe bypass enabled)
+            (Test mode - Stripe bypass enabled)
           </p>
           <GetStartedClient sessionId="test-bypass-no-stripe" />
         </div>

@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Campbell Football Evaluations",
   description:
-    "A 35-year college head coach giving families clarity, truth, and a real plan forward.",
+    "A 34-year college head coach giving families clarity, truth, and a real plan forward.",
 };
 
 export default function RootLayout({

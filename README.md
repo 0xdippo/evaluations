@@ -8,7 +8,7 @@ Marketing site and paid intake flow. Next.js (App Router), TypeScript, Tailwind 
 2. On success, Stripe redirects to `/questionnaire?session_id={CHECKOUT_SESSION_ID}`.
 3. Questionnaire page is **gated**: only shows the form if the session exists and `payment_status === "paid"`.
 4. User submits form → POST `/api/questionnaire/submit`. Server re-verifies session is paid, **emails you** the submission (to `ADMIN_NOTIFY_EMAIL`), and emails the customer a confirmation with a resume link.
-5. No database — everything is sent to your email. All outgoing email is via Resend from your domain (e.g. `noreply@yourdomain.com`).
+5. No database - everything is sent to your email. All outgoing email is via Resend from your domain (e.g. `noreply@yourdomain.com`).
 
 ## Setup (local)
 
@@ -33,11 +33,11 @@ cp .env.example .env.local
 | `STRIPE_PRICE_ID` | Stripe **Price** ID for the evaluation product (e.g. $149). Create a product + price in Dashboard, then use the `price_xxx` ID. |
 | `RESEND_API_KEY` | Resend API key (resend.com). |
 | `RESEND_FROM_EMAIL` | Sender for all emails (e.g. `noreply@yourdomain.com`). Must be verified in Resend. |
-| `ADMIN_NOTIFY_EMAIL` | **Your email** — where questionnaire submissions are sent. |
+| `ADMIN_NOTIFY_EMAIL` | **Your email** - where questionnaire submissions are sent. |
 
 ### 3. Stripe
 
-1. In Stripe Dashboard, create a **Product** (e.g. “Football Evaluation — $149”) and a **Price**. Copy the **Price ID** (`price_xxx`) into `STRIPE_PRICE_ID`.
+1. In Stripe Dashboard, create a **Product** (e.g. “Football Evaluation - $149”) and a **Price**. Copy the **Price ID** (`price_xxx`) into `STRIPE_PRICE_ID`.
 2. No Payment Link needed; checkout is created by POST `/api/checkout`. Success URL is set in code to `${NEXT_PUBLIC_APP_URL}/questionnaire?session_id={CHECKOUT_SESSION_ID}`.
 
 ### 4. Resend

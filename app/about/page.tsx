@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About | Campbell Football Evaluations",
   description:
-    "After 35 years coaching college football, Coach Campbell gives families straight answers and a real plan forward.",
+    "After 34 years coaching college football, Coach Campbell gives families straight answers and a real plan forward.",
 };
 
 export default function About() {
@@ -17,9 +17,9 @@ export default function About() {
       </h1>
 
       <p className="mt-6 text-text-muted">
-        Families deserve straight answers. After 35 years coaching college
+        Families deserve straight answers. After 34 years coaching college
         football at the JUCO, Division II, FCS, and FBS levels, I created this
-        to give parents and athletes the truth — clearly, calmly, and without
+        to give parents and athletes the truth - clearly, calmly, and without
         hype.
       </p>
 
@@ -28,7 +28,7 @@ export default function About() {
       </h2>
       <p className="mt-2 text-text-muted">
         For decades, I sat in staff rooms where real evaluations were
-        made—and as the final authority on scholarship decisions, I know
+        made-and as the final authority on scholarship decisions, I know
         exactly what coaches look for.
       </p>
       <p className="mt-2 text-text-muted">
@@ -47,13 +47,13 @@ export default function About() {
         </li>
         <li>D1 FCS Conference Coach of the Year</li>
         <li>Head coaching experience at JUCO, D2, FCS, and FBS</li>
-        <li>35 years evaluating and developing college athletes</li>
+        <li>34 years evaluating and developing college athletes</li>
         <li>Sent players to Power 4, FCS, Group of 5, NFL, NAIA, D2, and D3</li>
       </ul>
 
       <p className="mt-8 text-text-muted">
         You will receive the same level of evaluation I gave my college
-        athletes — honest, detailed, and actionable. No agendas. No sales
+        athletes - honest, detailed, and actionable. No agendas. No sales
         pitch.
       </p>
 

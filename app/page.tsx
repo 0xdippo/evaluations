@@ -24,8 +24,9 @@ export default function Home() {
             Parents Deserve Straight Answers. Athletes Deserve Real Insight.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-page-bg/90 [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">
-            A college coach with 35 years of experience, 22 as a head coach,
-            giving families clarity and a real plan forward.
+            A college coach with 34 years of experience-22 as a head coach,
+            2-time national champion-giving families clarity and a real plan
+            forward.
           </p>
           <div className="mt-8">
             <Button href="/services" variant="secondary">Get Your Evaluation</Button>
@@ -41,7 +42,7 @@ export default function Home() {
           What the Evaluation Is
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-text-muted">
-          Coach Campbell reviews your film the way a college staff would. You&apos;ll get a clear breakdown of what you&apos;re doing well, what&apos;s costing you, and what needs to improve — plus a realistic plan for your next steps based on where you are right now.
+          Coach Campbell reviews your film the way a college staff would. You&apos;ll get a clear breakdown of what you&apos;re doing well, what&apos;s costing you, and what needs to improve - plus a realistic plan for your next steps based on where you are right now.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           <Card>
@@ -50,7 +51,7 @@ export default function Home() {
                 Real Clarity
               </h3>
               <p className="mt-2 text-sm text-text-muted">
-                You&apos;ll know exactly what shows up on film — the good, the bad, and the in-between. No buzzwords, no false confidence. Just an honest snapshot of where you are today and what that means for recruiting.
+                You&apos;ll know exactly what shows up on film - the good, the bad, and the in-between. No buzzwords, no false confidence. Just an honest snapshot of where you are today and what that means for recruiting.
               </p>
             </div>
           </Card>
@@ -60,7 +61,7 @@ export default function Home() {
                 Position-Specific Feedback
               </h3>
               <p className="mt-2 text-sm text-text-muted">
-                Every position is judged differently. You&apos;ll get specific coaching points tied to your role — what recruiters want to see, what&apos;s missing, and the priorities that will move you forward fastest.
+                Every position is judged differently. You&apos;ll get specific coaching points tied to your role - what recruiters want to see, what&apos;s missing, and the priorities that will move you forward fastest.
               </p>
             </div>
           </Card>
@@ -84,7 +85,7 @@ export default function Home() {
         <p className="mt-4 text-text-muted">
           With the transfer portal reshaping opportunities, the path is harder
           for high school athletes. Coach Campbell provides an honest evaluation
-          and a clear path forward—without hype or sales pitches.
+          and a clear path forward-without hype or sales pitches.
         </p>
       </section>
 
@@ -128,7 +129,7 @@ export default function Home() {
           <br />
           Those experiences shaped how I evaluate athletes, and I created
           Campbell Football Evaluations to give families clarity, honesty, and
-          a real plan forward — without the sales pitches, false promises, or
+          a real plan forward - without the sales pitches, false promises, or
           confusion that surround the recruiting world.&rdquo;
         </blockquote>
       </section>
