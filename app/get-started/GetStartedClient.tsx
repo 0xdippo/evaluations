@@ -18,6 +18,8 @@ type FormData = {
   measurables: string;
   injuryHistory: string;
   goals: string;
+  primaryReason: string;
+  evaluationQuestions: string;
 };
 
 const initial: FormData = {
@@ -34,6 +36,8 @@ const initial: FormData = {
   measurables: "",
   injuryHistory: "",
   goals: "",
+  primaryReason: "",
+  evaluationQuestions: "",
 };
 
 const inputClass =
@@ -44,6 +48,7 @@ export function GetStartedClient({ sessionId }: { sessionId: string }) {
   const [data, setData] = useState<FormData>(initial);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [confirmed, setConfirmed] = useState(false);
 
   const update = (fields: Partial<FormData>) =>
     setData((prev) => ({ ...prev, ...fields }));
@@ -66,6 +71,8 @@ export function GetStartedClient({ sessionId }: { sessionId: string }) {
       measurables: data.measurables.trim() || undefined,
       injuryHistory: data.injuryHistory.trim() || undefined,
       goals: data.goals.trim() || undefined,
+      primaryReason: data.primaryReason.trim() || undefined,
+      evaluationQuestions: data.evaluationQuestions.trim() || undefined,
       stripeSessionId: sessionId,
     });
     if (result.ok) {
@@ -215,7 +222,7 @@ export function GetStartedClient({ sessionId }: { sessionId: string }) {
           </div>
           <div>
             <label htmlFor="videoLinks" className={labelClass}>
-              Video Links * (one or more URLs, one per line or comma-separated)
+              HUDL or highlight reel link *
             </label>
             <textarea
               id="videoLinks"
@@ -256,7 +263,7 @@ export function GetStartedClient({ sessionId }: { sessionId: string }) {
             <input
               id="measurables"
               type="text"
-              placeholder="40 time, etc."
+              placeholder="40 time, bench press, power clean, vertical, etc"
               value={data.measurables}
               onChange={(e) => update({ measurables: e.target.value })}
               className={inputClass}
@@ -286,6 +293,32 @@ export function GetStartedClient({ sessionId }: { sessionId: string }) {
               className={inputClass}
             />
           </div>
+          <div>
+            <label htmlFor="primaryReason" className={labelClass}>
+              What is the primary reason for seeking evaluation at this time?
+              (optional)
+            </label>
+            <textarea
+              id="primaryReason"
+              rows={2}
+              value={data.primaryReason}
+              onChange={(e) => update({ primaryReason: e.target.value })}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="evaluationQuestions" className={labelClass}>
+              What questions do you most want this evaluation to answer?
+              (optional)
+            </label>
+            <textarea
+              id="evaluationQuestions"
+              rows={2}
+              value={data.evaluationQuestions}
+              onChange={(e) => update({ evaluationQuestions: e.target.value })}
+              className={inputClass}
+            />
+          </div>
         </div>
       </section>
 
@@ -295,8 +328,27 @@ export function GetStartedClient({ sessionId }: { sessionId: string }) {
         </p>
       )}
 
+      <p className="text-sm text-text-muted">
+        Please review your answers before submitting. Submitting confirms that
+        the information you provided is accurate.
+      </p>
+      <label className="flex items-start gap-3 cursor-pointer group">
+        <input
+          type="checkbox"
+          checked={confirmed}
+          onChange={(e) => setConfirmed(e.target.checked)}
+          className="mt-1 rounded border-navy/25 text-gold focus:ring-gold focus:ring-offset-0"
+        />
+        <span className="text-sm text-navy group-hover:text-navy/90">
+          I understand this evaluation is an independent, honest assessment based on highlight film, graduation year, and experience. No recruiting guarantees or promises are made.
+        </span>
+      </label>
+
       <div className="pt-2">
-        <Button type="submit" disabled={status === "submitting"}>
+        <Button
+          type="submit"
+          disabled={status === "submitting" || !confirmed}
+        >
           {status === "submitting" ? "Submitting…" : "Submit"}
         </Button>
       </div>

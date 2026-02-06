@@ -1,5 +1,6 @@
 import { verifyCheckoutSession } from "@/app/actions/stripe";
 import { GetStartedClient } from "./GetStartedClient";
+import { PaymentRequiredFallback } from "./PaymentRequiredFallback";
 import { Button } from "@/components/Button";
 import type { Metadata } from "next";
 
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
   title: "Get Started | Campbell Football Evaluations",
   description: "Complete your evaluation questionnaire after purchase.",
 };
+
+// Always read searchParams from the request (no static caching)
+export const dynamic = "force-dynamic";
 
 type Props = {
   searchParams: Promise<{ session_id?: string }>;
@@ -43,6 +47,7 @@ export default async function GetStartedPage({ searchParams }: Props) {
         <p className="mt-4 text-text-muted">
           Complete your purchase to access the questionnaire.
         </p>
+        <PaymentRequiredFallback />
         <div className="mt-8">
           <Button href="/services">Go to Services</Button>
         </div>

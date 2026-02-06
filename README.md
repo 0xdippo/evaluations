@@ -1,8 +1,16 @@
 # Campbell Football Evaluations
 
-Marketing site and paid intake flow for Campbell Football Evaluations. Next.js (App Router), TypeScript, Tailwind CSS. Payments via Stripe (Payment Link + Checkout Session verification). Emails via Resend. No database — all intake data is emailed to the business.
+Marketing site and paid intake flow. Next.js (App Router), TypeScript, Tailwind CSS. **Stripe Checkout** (hosted) → redirect to **/questionnaire** → customer fills form → **questionnaire is emailed to you** via Resend (plus a confirmation email to the customer).
 
-## Setup
+## Flow
+
+1. User clicks “Get Started (Purchase)” on Services → POST `/api/checkout` → redirect to Stripe Checkout.
+2. On success, Stripe redirects to `/questionnaire?session_id={CHECKOUT_SESSION_ID}`.
+3. Questionnaire page is **gated**: only shows the form if the session exists and `payment_status === "paid"`.
+4. User submits form → POST `/api/questionnaire/submit`. Server re-verifies session is paid, **emails you** the submission (to `ADMIN_NOTIFY_EMAIL`), and emails the customer a confirmation with a resume link.
+5. No database — everything is sent to your email. All outgoing email is via Resend from your domain (e.g. `noreply@yourdomain.com`).
+
+## Setup (local)
 
 ### 1. Install dependencies
 
@@ -12,7 +20,7 @@ npm install
 
 ### 2. Environment variables
 
-Copy the example env file and fill in your values:
+Copy the example and fill in:
 
 ```bash
 cp .env.example .env.local
@@ -20,63 +28,60 @@ cp .env.example .env.local
 
 | Variable | Description |
 |----------|-------------|
-| `STRIPE_SECRET_KEY` | Stripe secret key (Dashboard → Developers → API keys). Required for verifying payment on `/get-started`. |
-| `NEXT_PUBLIC_STRIPE_PAYMENT_LINK_URL` | Your Stripe Payment Link URL. Create in Stripe Dashboard → Product catalog → Payment Links. **Success URL:** set to `http://localhost:3000/get-started?session_id={CHECKOUT_SESSION_ID}` for local dev (replace with your production URL when deploying). |
-| `RESEND_API_KEY` | Resend API key (resend.com). Required for sending the questionnaire submission to the business and optional parent confirmation. |
-| `FROM_EMAIL` | Sender for transactional emails (e.g. `Campbell Evaluations <no-reply@yourdomain.com>`). Must be a verified domain in Resend, or omit to use Resend’s default onboarding sender. |
+| `NEXT_PUBLIC_APP_URL` | Full app URL (e.g. `http://localhost:3000` local, `https://yourdomain.com` prod). Used for Stripe success/cancel URLs and email links. |
+| `STRIPE_SECRET_KEY` | Stripe secret key (Dashboard → Developers → API keys). |
+| `STRIPE_PRICE_ID` | Stripe **Price** ID for the evaluation product (e.g. $149). Create a product + price in Dashboard, then use the `price_xxx` ID. |
+| `RESEND_API_KEY` | Resend API key (resend.com). |
+| `RESEND_FROM_EMAIL` | Sender for all emails (e.g. `noreply@yourdomain.com`). Must be verified in Resend. |
+| `ADMIN_NOTIFY_EMAIL` | **Your email** — where questionnaire submissions are sent. |
 
-### 3. Stripe Payment Link
+### 3. Stripe
 
-1. In [Stripe Dashboard](https://dashboard.stripe.com), create a product (e.g. “Football Evaluation — $149”).
-2. Create a **Payment Link** for that product.
-3. In the Payment Link settings, set **After payment** → **Redirect to a URL** to:
-   - Local: `http://localhost:3000/get-started?session_id={CHECKOUT_SESSION_ID}`
-   - Production: `https://yourdomain.com/get-started?session_id={CHECKOUT_SESSION_ID}`
-4. Paste the Payment Link URL into `NEXT_PUBLIC_STRIPE_PAYMENT_LINK_URL` in `.env.local`.
+1. In Stripe Dashboard, create a **Product** (e.g. “Football Evaluation — $149”) and a **Price**. Copy the **Price ID** (`price_xxx`) into `STRIPE_PRICE_ID`.
+2. No Payment Link needed; checkout is created by POST `/api/checkout`. Success URL is set in code to `${NEXT_PUBLIC_APP_URL}/questionnaire?session_id={CHECKOUT_SESSION_ID}`.
 
 ### 4. Resend
 
-1. Sign up at [resend.com](https://resend.com) and get an API key.
-2. Add `RESEND_API_KEY` to `.env.local`.
-3. For a custom sender, verify your domain in Resend and set `FROM_EMAIL` (e.g. `Campbell Evaluations <no-reply@yourdomain.com>`). Otherwise you can omit `FROM_EMAIL` to use Resend’s default sender for testing.
+1. Sign up at [resend.com](https://resend.com), get an API key, add to `RESEND_API_KEY`.
+2. Verify your domain and set `RESEND_FROM_EMAIL` (e.g. `noreply@yourdomain.com`).
 
-### 5. Local development
+### 5. Run locally
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). Use the Services page to go through checkout (Stripe test card `4242 4242 4242 4242`). After payment you’re redirected to `/questionnaire?session_id=...` to complete the form. When they submit, you get an email with the answers.
 
-- **Without Stripe/Resend:** Home, About, Services, and FAQ work. The Services page will show a message if the payment link isn’t set. Get Started without a valid `session_id` or with an invalid/unpaid session shows the appropriate message.
-- **With Stripe:** Use a test Payment Link and test card. After payment, you’re redirected to `/get-started?session_id=...` and can complete the questionnaire.
-- **With Resend:** Submitting the questionnaire sends an email to `campbellfootballevaluations@gmail.com` and an optional confirmation to the parent email.
+## Vercel deployment
 
-### 6. Build and run production
+1. Connect the repo to Vercel and deploy.
+2. In Vercel → Project → **Settings → Environment Variables**, add:
 
-```bash
-npm run build
-npm start
-```
+| Name | Value |
+|------|--------|
+| `NEXT_PUBLIC_APP_URL` | `https://yourdomain.com` |
+| `STRIPE_SECRET_KEY` | From Stripe Dashboard |
+| `STRIPE_PRICE_ID` | Your evaluation price ID |
+| `RESEND_API_KEY` | From Resend |
+| `RESEND_FROM_EMAIL` | `noreply@yourdomain.com` (verified in Resend) |
+| `ADMIN_NOTIFY_EMAIL` | Your email (where you receive submissions) |
 
-## Deploy
-
-1. Set the same env vars in your host (Vercel, etc.).
-2. Update the Stripe Payment Link success URL to your production domain: `https://yourdomain.com/get-started?session_id={CHECKOUT_SESSION_ID}`.
+3. Redeploy after saving env vars.
 
 ## Routes
 
 | Route | Description |
 |-------|-------------|
 | `/` | Home |
-| `/about` | About Coach Campbell |
-| `/services` | Services and pricing; CTA to Stripe Payment Link |
-| `/faq` | FAQ accordion |
-| `/get-started?session_id=...` | Questionnaire (gated by Stripe payment verification) |
+| `/about` | About |
+| `/services` | Services and pricing; “Get Started” creates Stripe Checkout and redirects |
+| `/faq` | FAQ |
+| `/questionnaire?session_id=...` | Questionnaire form (gated: paid session only) |
+| `POST /api/checkout` | Creates Stripe Checkout session; returns `{ url }` for redirect |
+| `POST /api/questionnaire/submit` | Validates session, emails you the submission + customer confirmation |
 
-## Business rules
+## Tech
 
-- **Price:** $149 one-time. No database; intake is emailed only.
-- **Deliverable:** PDF evaluation; turnaround 3 business days.
-- **Get Started:** Questionnaire is only shown after Stripe Checkout Session is verified as `payment_status === "paid"`.
-- **On submit:** Email to `campbellfootballevaluations@gmail.com` with all fields and Stripe `session_id`; optional confirmation email to parent; on-page message: “Submitted. Expect your PDF within 3 business days.”
+- **Stripe:** Server-side SDK; Checkout Session with `customer_creation: "always"`, success URL to `/questionnaire?session_id={CHECKOUT_SESSION_ID}`.
+- **Resend:** One email to you (form summary + raw JSON); one to the customer (“We received your questionnaire” + resume link). No database.

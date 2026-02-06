@@ -18,6 +18,8 @@ export type QuestionnaireData = {
   measurables?: string;
   injuryHistory?: string;
   goals?: string;
+  primaryReason?: string;
+  evaluationQuestions?: string;
   stripeSessionId: string;
 };
 
@@ -31,13 +33,15 @@ function formatEmailBody(data: QuestionnaireData): string {
     `Height: ${data.height}`,
     `Weight: ${data.weight}`,
     `School: ${data.school}`,
-    `Video Links: ${data.videoLinks}`,
+    `HUDL or highlight reel link: ${data.videoLinks}`,
     "",
     "--- Optional ---",
     `Academic Info: ${data.academicInfo ?? "(not provided)"}`,
     `Measurables: ${data.measurables ?? "(not provided)"}`,
     `Injury History: ${data.injuryHistory ?? "(not provided)"}`,
     `Goals: ${data.goals ?? "(not provided)"}`,
+    `Primary reason for seeking evaluation: ${data.primaryReason ?? "(not provided)"}`,
+    `Questions they want answered: ${data.evaluationQuestions ?? "(not provided)"}`,
     "",
     `Stripe Session ID: ${data.stripeSessionId}`,
   ];

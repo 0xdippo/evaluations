@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Card } from "@/components/Card";
 import { Carousel } from "@/components/Carousel";
+import { CheckoutButton } from "./CheckoutButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,8 +9,6 @@ export const metadata: Metadata = {
   description:
     "$149 one-time evaluation. Full highlight evaluation, position-specific insight, and a real plan forward. Delivered in 3 business days.",
 };
-
-const STRIPE_PAYMENT_LINK = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK_URL;
 
 export default function Services() {
   return (
@@ -52,19 +51,7 @@ export default function Services() {
           </p>
         </div>
         <div className="mt-6">
-          {STRIPE_PAYMENT_LINK ? (
-            <a
-              href={STRIPE_PAYMENT_LINK}
-              className="inline-flex items-center justify-center rounded-md bg-navy px-5 py-2.5 text-sm font-medium text-page-bg hover:bg-navy-hover focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 transition-colors"
-            >
-              Get Started (Purchase)
-            </a>
-          ) : (
-            <p className="text-sm text-amber-700">
-              Payment link not configured. Set NEXT_PUBLIC_STRIPE_PAYMENT_LINK_URL
-              in .env.local.
-            </p>
-          )}
+          <CheckoutButton />
         </div>
       </Card>
 
